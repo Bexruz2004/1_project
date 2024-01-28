@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner text-center">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Contact Us</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    {% if messages %}
+    <div id="django-messages" class="">
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="message-success">{{ message }}</div>
+            {% elif message.tags == 'error' %}
+                <div class="message-danger">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+    <style>
+    #django-messages div[class^=message] {
+  width: 100%;
+  padding: 40px 15px;
+  border-radius: 8px;
+  border: 2px solid;
+  color: #fff;
+  font-weight: 700;
+  line-height: 18px;
+  z-index: 999;
+}
+#django-messages {
+  position: sticky !important;
+  z-index: 4;
+  overflow: hidden;
+}
+#django-messages .message-success {
+  background-color: forestgreen;
+  border-color: darkgreen;
+}
+#django-messages .message-error {
+  background-color: red;
+  border-color: darkred;
+}
+.hide {
+  animation-name: hide_slide_show;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hide_slide_show {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}
+    </style>
+
+
+
+
+
+    <section class="contact-section section_padding">
+        <div class="container">
+            <div class="d-none d-sm-block mb-5 pb-4">
+                {#                <div id="map" style="height: 480px;"></div>#}
+                {#                <script>#}
+                {#                    function initMap() {#}
+                {#                        var uluru = {#}
+                {#                            lat: -25.363,#}
+                {#                            lng: 131.044#}
+                {#                        };#}
+                {#                        var grayStyles = [{#}
+                {#                            featureType: "all",#}
+                {#                            stylers: [{#}
+                {#                                saturation: -90#}
+                {#                            },#}
+                {#                                {#}
+                {#                                    lightness: 50#}
+                {#                                }#}
+                {#                            ]#}
+                {#                        },#}
+                {#                            {#}
+                {#                                elementType: 'labels.text.fill',#}
+                {#                                stylers: [{#}
+                {#                                    color: '#ccdee9'#}
+                {#                                }]#}
+                {#                            }#}
+                {#                        ];#}
+                {#                        var map = new google.maps.Map(document.getElementById('map'), {#}
+                {#                            center: {#}
+                {#                                lat: -31.197,#}
+                {#                                lng: 150.744#}
+                {#                            },#}
+                {#                            zoom: 9,#}
+                {#                            styles: grayStyles,#}
+                {#                            scrollwheel: false#}
+                {#                        });#}
+                {#                    }#}
+                {#                </script>#}
+                {#                <script>#}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11979.410871610571!2d69.2878617!3d41.3555549!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef3874b503727%3A0x87d7b3568c7badc8!2sFarobiy%20IT%20Academy!5e0!3m2!1sru!2s!4v1706189452611!5m2!1sru!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+
+                </iframe>
+                {#                </script>#}
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Get in Touch</h2>
+                </div>
+                <div class="col-lg-8">
+                    {#                class="form-contact contact_form"   novalidate="novalidate"#}
+                    <form method="post" id="contactForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    {{ form.message }}
+                                    {#                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"#}
+                                    {#                                          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"#}
+                                    {#                                          placeholder="Enter Message"></textarea>#}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form.name }}
+                                    {#                                <input class="form-control" name="name" id="name" type="text"#}
+                                    {#                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"#}
+                                    {#                                       placeholder="Enter your name">#}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form.email }}
+                                    {#                                <input class="form-control" name="email" id="email" type="email"#}
+                                    {#                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'"#}
+                                    {#                                       placeholder="Enter email address">#}
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    {{ form.subject }}
+                                    {#                                <input class="form-control" name="subject" id="subject" type="text"#}
+                                    {#                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'"#}
+                                    {#                                       placeholder="Enter Subject">#}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="load_btn">
+                            <button class="btn_1">Save</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Buttonwood, California.</h3>
+                            <p>Rosemead, CA 91770</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>00 (440) 9865 562</h3>
+                            <p>Mon to Fri 9am to 6pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" class="__cf_email__"
+                                   data-cfemail="15666065657a676155767a797a67797c773b767a78">[email&#160;protected]</a>
+                            </h3>
+                            <p>Send us your query anytime!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('#django-messages').addClass('hide');
+            }, 3000);
+        });
+    </script>
+{% endblock %}
+
+
